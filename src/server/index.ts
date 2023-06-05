@@ -1,6 +1,8 @@
 import express, { Response, NextFunction } from "express";
 import { config } from "dotenv";
 import bodyParser from "body-parser";
+import routes from "../router";
+
 
 const app = express();
 app.use(bodyParser.json({ limit: "5mb" }));
@@ -16,5 +18,6 @@ app.use((__, res: Response, next: NextFunction) => {
   next();
 });
 
+app.use(routes);
 
 export { app };
