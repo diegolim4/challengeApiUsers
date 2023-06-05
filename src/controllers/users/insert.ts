@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 import { db } from "../../config/database";
 import { hash } from "bcrypt";
 
-
 interface IinsertUser {
   name: string;
   email: string;
@@ -16,19 +15,17 @@ export const insert = async (req: Request, res: Response) => {
     if (!name || !email || !password)
       return res
         .status(401)
-        .json({ message: "Necessário informa todos os dados!" });
+        .json({ message: "Parameters must not be empty!" });
 
-    let ress = await db.user.create({
+    await db.user.create({
       data: {
         name: name,
         email: email,
-        password: await hash(password, 10)
+        password: await hash(password, 10),
       },
     });
 
-    return res
-      .status(201)
-      .json({ message: ress });
+    return res.status(201).json({ message: "Success!" });
   } catch (error) {
     return res.status(500).json({ message: error });
   }
