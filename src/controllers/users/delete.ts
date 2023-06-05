@@ -15,7 +15,7 @@ export const remove = async (req: Request, res: Response) => {
         id: userId,
       },
     });
-    return res.status(200).json({ message: "Success remove user!" });
+    return res.status(201).json({ message: "Success remove user!" });
   } catch (error) {
     return res.status(500).json({ message: error });
   }
