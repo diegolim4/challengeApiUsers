@@ -1,5 +1,7 @@
 import { Router } from "express";
-import { UsersControllers, UserGithubControllers } from "../controllers";
+import { UsersControllers, UserGithubControllers, Midias } from "../controllers";
+import { upload } from "../config/multer";
+
 
 const router = Router();
 
@@ -19,6 +21,10 @@ router.put("/updateUser/:id", UsersControllers.updated);
 router.delete("/deleteUser/:id", UsersControllers.remove);
 
 router.get("/searchUser/:user", UserGithubControllers.searchUserGithub);
+
+router.post("/uploadImage", upload.single('image'), Midias.uploadImage)
+
+router.post("/uploadAudio", upload.single('audio'), Midias.uploadAudio)
 
 
 router.use("/api", router);
