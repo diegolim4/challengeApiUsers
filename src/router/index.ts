@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { UsersControllers } from "../controllers";
+import { UsersControllers, UserGithubControllers } from "../controllers";
 
 const router = Router();
 
@@ -17,6 +17,9 @@ router.get("/getUsers", UsersControllers.get);
 router.put("/updateUser/:id", UsersControllers.updated);
 
 router.delete("/deleteUser/:id", UsersControllers.remove);
+
+router.get("/searchUser/:user", UserGithubControllers.searchUserGithub);
+
 
 router.use("/api", router);
 
