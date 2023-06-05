@@ -12,6 +12,12 @@ router.get("/about", (_, res) => {
 
 router.post("/insertUser", UsersControllers.insert);
 
+router.get("/getUsers", UsersControllers.get);
+
+router.put("/updateUser/:id", UsersControllers.updated);
+
+router.delete("/deleteUser/:id", UsersControllers.remove);
+
 router.use("/api", router);
 
 export default router;
