@@ -8,7 +8,7 @@ export const remove = async (req: Request, res: Response) => {
     if (!userId)
       return res
         .status(401)
-        .json({ message: "Parameters must not be empty" });
+        .json({ message: "Parameters must not be empty!" });
 
     await db.user.delete({
       where: {
