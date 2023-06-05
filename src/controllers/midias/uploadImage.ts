@@ -18,7 +18,7 @@ export const uploadImage = async (req: Request, res: Response) => {
 
     if (!validateLength)
       return res.status(401).json({
-        message: "The image file size not the allowed limits!",
+        message: "The file size not the allowed limits!",
       });
 
     let imagePath = filePath(imgFile.originalname);
